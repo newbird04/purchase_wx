@@ -1,0 +1,24 @@
+<!--index.wxml-->
+<view>
+  <view class="index-header">
+    <image class="index-bg" src="resource/index-bg.png"></image>
+  </view>
+  <view class="index-body">
+    <view class="list-group">
+      <view class="list-item px-4" bindtap="scan">
+        <view class="list-item-title">
+          <text class="iconfont icon-fapiao text-red"></text>
+          <text class="list-item-text">发票扫描录入</text>
+        </view>
+        <text class="iconfont icon-huise1"></text>
+      </view>
+      <view class="list-item px-4">
+        <view class="list-item-title">
+          <text class="iconfont icon-tuxiangshibie text-red"></text>
+          <text class="list-item-text">发票图像识别验真</text>
+        </view>
+        <text class="iconfont icon-huise1"></text>
+      </view>
+    </view>
+  </view>
+</view>

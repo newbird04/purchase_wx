@@ -1,13 +1,15 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/component/index",
+    "pages/logs/logs",
+    "pages/component/pages/addInvoice/addInvoice"
   ],
   "window": {
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "无花果",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#c7000a",
+    "navigationBarTitleText": "工银聚发票扫码",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f5"
   },
   "sitemapLocation": "sitemap.json"
 }

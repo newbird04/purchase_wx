@@ -1,0 +1,65 @@
+<view>
+  <view class="list-group">
+    <view class="list-item text-grey mx-3">
+      <text class="text-grey">供应商</text>
+      <text>ABC公司供应商1</text>
+    </view>
+    <view class="list-item text-grey mx-3">
+      <text class="text-grey">预发票编号</text>
+      <text>201910100001</text>
+    </view>
+  </view>
+  <view class="title">
+    <text>发票列表</text>
+  </view>
+  <view class="mb-3">
+    <view class="card mb-2">
+      <view class="card-head text-red d-flex font-weight-bold">
+        <text class="iconfont icon-jiahao f-18"></text>
+        <text class="mx-2">添加发票</text>
+      </view>
+    </view>
+    <view class="card">
+      <view class="card-head">
+        <view class="card-head-bar"></view>
+        <text class="text-red">发票代码</text>
+        <text class="mx-3 text-grey-dark">033001800201</text>
+      </view>
+      <view class="card-body text-grey">
+        <view class="d-flex align-items-center justify-content-between mb-3">
+          <text>发票号码</text>
+          <text>44590041</text>
+        </view>
+        <view class="d-flex align-items-center justify-content-between mb-3">
+          <text>合计金额</text>
+          <text class="text-red">474.76 (不含税)</text>
+        </view>
+        <view class="d-flex align-items-center justify-content-between">
+          <text>开票日期</text>
+          <text>2019.06.21</text>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="mx-3 mt-5">
+    <button class="mb-3" type="warn">保存</button>
+    <button class="" plain="true" type="warn">提交</button>
+  </view>
+  <view class="warm-notice">
+    <view class="warm-notice-head">
+      <text class="warm-notice-text">温馨提示</text>
+    </view>
+    <view class="warn-notice-body">
+      <view>
+        <text>保存表示发票与预发票关联暂存但不提交；</text> 
+      </view>
+      <view>
+        <text>提交表示保存并推送企业ERP；</text>
+      </view>
+      <view>
+        <text>全部操作结束，调整页面，显示操作失败还是成功；同时提示刷新电脑 端页面查看最终操作结果。</text>
+      </view>
+    </view>
+  </view>
+  
+</view>

@@ -1,0 +1,54 @@
+@import '../../../common/wxss/iconfont.wxss';
+@import '../../../common/wxss/common.wxss';
+/*扫描发票*/
+page{
+  background-color: #f5f5f5;
+}
+.title{
+  font-size: 28rpx;
+  padding: 20rpx 28rpx;
+}
+.card{
+  background-color: #ffffff;
+}
+.card-head{
+  font-weight: bold;
+  position: relative;
+  padding: 28rpx;
+  border-bottom: 2rpx solid #f5f5f5;
+}
+.card-head-bar{
+  display: block;
+  width: 6rpx;
+  height: 60rpx;
+  position: absolute;
+  left: 0rpx;
+  top: 17.2rpx;
+  background-color: #c7000a;
+}
+.card-body{
+  padding: 28rpx;
+}
+.warm-notice{
+  padding: 14px;
+  font-size: 12px;
+  color: #999999;
+  margin-top: 20px;
+}
+.warm-notice-head{
+  border-bottom: 1px solid #e5e5e5;
+  position: relative;
+}
+.warm-notice-text{
+  position: absolute;
+  width: 72px;
+  left: 50%;
+  margin-left: -36px;
+  top:-7px;
+  text-align: center;
+  background-color: #f5f5f5;
+}
+.warn-notice-body{
+  padding-top: 14px;
+  line-height: 20px;
+}
