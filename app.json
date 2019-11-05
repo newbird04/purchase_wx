@@ -1,13 +1,13 @@
 {
   "pages": [
-    "pages/component/index",
-    "pages/logs/logs",
-    "pages/component/pages/addInvoice/addInvoice"
+    "pages/index/index",
+    "pages/addInvoice/addInvoice",
+    "pages/ocrInvoice/ocrInvoice"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#c7000a",
-    "navigationBarTitleText": "工银聚发票扫码",
+    "navigationBarTitleText": "工银聚扫描",
     "navigationBarTextStyle": "white",
     "backgroundColor": "#f5f5f5"
   },

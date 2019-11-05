@@ -1,0 +1,80 @@
+<view>
+  <view class="list-group">
+    <view class="list-item text-grey mx-3">
+      <text class="text-grey">供应商</text>
+      <text>{{customerId}}</text>
+    </view>
+    <view class="list-item text-grey mx-3">
+      <text class="text-grey">票据编号</text>
+      <text>{{preInvoiceNo}}</text>
+    </view>
+  </view>
+  <view class="title">
+    <text>票据列表</text>
+  </view>
+  <view class="mb-3">
+    <view class="card">
+      <view class="card-head text-red d-flex font-weight-bold" bindtap="ocrPurchase">
+        <text class="iconfont icon-jiahao f-18"></text>
+        <text class="mx-2">点击拍照</text>
+      </view>
+    </view>
+    <view class="card mb-2">
+      <view class="card-body d-flex bg-yellow" bindtap="ocrPurchase">
+        <text class="text-grey-light f-12">温馨提示：1、发票影像请使用横屏拍摄，尽量充满整个影像；2、照片避免模糊、避免存在阴影与折角。</text>
+      </view>
+    </view>
+    <view>
+      <block wx:for-items="{{invoiceList}}" wx:key="{{item.purchaseNo}}">
+     
+        <view class="card">
+          <view class="card-head">
+            <view class="card-head-bar"></view>
+            <text class="text-red">票据代码</text>
+            <text class="mx-3 text-grey-dark">{{item.certificateCode}}</text>
+            <text class="iconfont icon-shanchu float-right text-grey" bindtap="delPurchase" data-purchaseNo="{{item.purchaseNo}}"></text>
+          </view>
+          <view class="card-body text-grey">
+            <view class="d-flex align-items-center justify-content-between mb-3">
+              <text>票据号码</text>
+              <text>{{item.purchaseNo}}</text>
+            </view>
+            <view class="d-flex align-items-center justify-content-between mb-3">
+              <text>合计金额</text>
+              <text class="text-red">{{item.excludTaxAmount}} (不含税)</text>
+            </view>
+            <view class="d-flex align-items-center justify-content-between">
+              <text>开票日期</text>
+              <text>{{item.purchaseDate}}</text>
+            </view>
+              <view class="d-flex align-items-center justify-content-between">
+                <image class='img' src='{{item.img}}' data-index='{{index}}' bindtap='previewImg'></image>
+              </view>            
+          </view>
+        
+        </view>
+      </block>
+    </view>
+  </view>
+  <view class="mx-3 mt-5">
+    <button class="mb-3" type="warn" bindtap="savePurchase" data-operation="{{0}}">暂存</button>
+    <button class="" plain="true" type="warn" bindtap="savePurchase" data-operation="{{1}}">提交</button>
+  </view>
+  <view class="warm-notice">
+    <view class="warm-notice-head">
+      <text class="warm-notice-text">温馨提示</text>
+    </view>
+    <view class="warn-notice-body">
+      <view>
+        <text>保存表示票据与预发票关联暂存但不提交；</text> 
+      </view>
+      <view>
+        <text>提交表示保存并推送企业ERP；</text>
+      </view>
+      <view>
+        <text>全部操作结束，调整页面，显示操作失败还是成功；同时提示刷新电脑 端页面查看最终操作结果。</text>
+      </view>
+    </view>
+  </view>
+  
+</view>

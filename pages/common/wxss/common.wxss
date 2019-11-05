@@ -13,6 +13,9 @@ page{
 .text-grey{
   color: #666666;
 }
+.bg-yellow{
+  background-color: #fff9c4;
+}
 .font-weight-bold{
   font-weight: bold;
 }
@@ -46,6 +49,9 @@ page{
 .align-items-center{
   align-items: center;
 }
+.float-right{
+  float: right;
+}
 .list-group{
   background-color: #ffffff;
 }
@@ -58,15 +64,12 @@ page{
   background-color: #ffffff;
   font-size: 28rpx;
 }
-.list-group  .list-item:last-child{
-  border-bottom: none;
-}
 .list-group .list-item .list-item-title{
   display: flex;
   align-items: center;
 }
 .list-group .list-item-text{
-  font-size: 28rpx;
+  font-size: 32rpx;
   margin-left: 10rpx;
 }
 button{

@@ -1,5 +1,5 @@
-@import '../../../common/wxss/iconfont.wxss';
-@import '../../../common/wxss/common.wxss';
+@import '../common/wxss/iconfont.wxss';
+@import '../common/wxss/common.wxss';
 /*扫描发票*/
 page{
   background-color: #f5f5f5;
