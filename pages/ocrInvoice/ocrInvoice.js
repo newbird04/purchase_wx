@@ -105,7 +105,7 @@ Page({
         var filePathstr = res.tempFilePaths[0];
         wx.compressImage({
           src: filePathstr, // 图片路径
-          quality: 20, // 压缩质量
+          quality: 50, // 压缩质量
           success: function (res) {
             console.log(res.tempFilePath)
             wx.uploadFile({
