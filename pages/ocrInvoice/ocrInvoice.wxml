@@ -21,7 +21,7 @@
     </view>
     <view class="card mb-2">
       <view class="card-body d-flex bg-yellow" bindtap="ocrPurchase">
-        <text class="text-grey-light f-12">温馨提示：1、发票影像请使用横屏拍摄，尽量充满整个影像；2、照片避免模糊、避免存在阴影与折角。</text>
+        <text class="text-grey-light f-12">温馨提示：1、票据影像请使用横屏拍摄，尽量充满整个影像；2、照片避免模糊、避免存在阴影与折角。</text>
       </view>
     </view>
     <view>
