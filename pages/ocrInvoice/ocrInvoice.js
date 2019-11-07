@@ -9,7 +9,8 @@ Page({
     customerId: '',
     preInvoiceNo: '',
     merid: '',
-    invoiceList: []
+    invoiceList: [],
+    hidden: true
   },
 
   /**
@@ -92,15 +93,16 @@ Page({
       });
       return false;
     }
-    wx.showLoading({
-      title: '识别中,请稍等...',
-    })
+    
     var that = this;
     wx.chooseImage({
       count:1,  //最多可以选择的图片张数，1张
       sizeType: [ 'original'],// original 原图，compressed 压缩图，默认二者都有
       sourceType: ['camera','album'], // album 从相册选图，camera 使用相机，默认二者都有
       success: function (res) {
+        that.setData({
+          hidden: false
+        })
         console.log(res);
         var filePathstr = res.tempFilePaths[0];
         wx.compressImage({
@@ -113,7 +115,9 @@ Page({
               filePath: res.tempFilePath, //获取图片路径      
               name: 'file',
               success: function (res) {
-                wx.hideLoading();
+                that.setData({
+                  hidden: true
+                })
                 var data = JSON.parse(res.data);
                 if (data.retCode == '200') {
                   const invoice = {
@@ -152,7 +156,9 @@ Page({
               },
               fail: function (res) {
                 console.log(res.errMsg);
-                wx.hideLoading()
+                that.setData({
+                  hidden: true
+                })
                 wx.showToast({
                   title: 'ocr识别失败，请重新拍照',
                   icon: 'none',
@@ -166,7 +172,10 @@ Page({
 
     
       }, fail: function () {
-        wx.hideLoading();
+        
+        that.setData({
+          hidden: true
+        })
       },
       complete: function () {
         

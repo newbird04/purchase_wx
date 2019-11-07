@@ -1,3 +1,6 @@
+<loading hidden="{{hidden}}">
+识别中
+</loading>
 <view>
   <view class="list-group">
     <view class="list-item text-grey mx-3">
