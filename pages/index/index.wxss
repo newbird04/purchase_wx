@@ -2,7 +2,7 @@
 @import '../common/wxss/common.wxss';
 /**index.wxss**/
 page{
-  background-color: #ffffff;
+  background-color: rgb(248, 249, 251);
 }
 .index-header{
   height: 420rpx;

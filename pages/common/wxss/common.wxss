@@ -4,6 +4,9 @@ page{
 .f-18{
   font-size: 36rpx;
 }
+.f-12{
+  font-size: 24rpx;
+}
 .text-red{
   color: #c7000a;
 }
@@ -13,8 +16,11 @@ page{
 .text-grey{
   color: #666666;
 }
+.text-grey-light{
+  color: #999999;
+}
 .bg-yellow{
-  background-color: #fff9c4;
+  background-color: rgba(255,255,234,.7);
 }
 .font-weight-bold{
   font-weight: bold;
