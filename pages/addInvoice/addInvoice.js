@@ -1,3 +1,5 @@
+import { JSEncrypt } from '../../utils/jsencrypt.js'
+
 Page({
   /**
    * 页面的初始数据
@@ -196,6 +198,9 @@ Page({
     that.setData({
       operation: operation
     });
+
+    var publicKey_pkcs1 = '-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCWUNswfbrwfR2nGUwIzATI9D+40Q41CcFhZJsXM922jAFDKIpoonu+OfjjuqY6PO4ftConWufEXXcQEkbfwaCGKASjXQEgrj0YTrEBTjSDemCxVtx72wY90poikhlvvCqByacWAJ+RbJYoPmxsLiahgyjUjAx+WCMQzWfj4HtOhwIDAQAB-----END PUBLIC KEY-----';
+
     var warMsg = '';
     if (operation == '0') warMsg = '确认保存已扫描的票据信息到该预发票?';
     if (operation == '1') warMsg = '将提交该预发票信息至核心企业,提交后已扫描的票据信息无法修改,是否确认提交?';
@@ -204,8 +209,15 @@ Page({
       content: warMsg,
       success: function(res) {
         if (res.confirm) {
-          var utils = require('../../utils/util.js');
-          var jsonStr = utils.base64_encode(JSON.stringify(that.data));
+
+          //RSA加密处理
+          var encryptor = new JSEncrypt();
+          encryptor.setPublicKey(publicKey_pkcs1);
+          var jsonStr = encryptor.encryptLong(JSON.stringify(that.data));
+          console.log("加密结果：" + jsonStr);
+
+          // var utils = require('../../utils/util.js');
+          // var jsonStr = utils.base64_encode(JSON.stringify(that.data));
           // var jsonStr = JSON.stringify(that.data);
           wx.request({
             url: 'https://gyj1.dccnet.com.cn/purchase/~main/wxRequest.php',
