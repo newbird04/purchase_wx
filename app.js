@@ -65,6 +65,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    publicKey_pkcs1: '-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCWUNswfbrwfR2nGUwIzATI9D+40Q41CcFhZJsXM922jAFDKIpoonu+OfjjuqY6PO4ftConWufEXXcQEkbfwaCGKASjXQEgrj0YTrEBTjSDemCxVtx72wY90poikhlvvCqByacWAJ+RbJYoPmxsLiahgyjUjAx+WCMQzWfj4HtOhwIDAQAB-----END PUBLIC KEY-----'
   }
 })

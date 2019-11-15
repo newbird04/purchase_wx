@@ -1,3 +1,5 @@
+import { JSEncrypt } from '../../utils/jsencrypt.js'
+const app = getApp();
 Page({
 
   /**
@@ -250,6 +252,9 @@ Page({
     that.setData({
       operation: operation
     });
+
+    var publicKey_pkcs1 = app.globalData.publicKey_pkcs1;
+
     var warMsg = '';
     if (operation == '0') warMsg = '确认保存已识别的票据信息到该预发票?';
     if (operation == '1') warMsg = '将提交该票据信息至核心企业,提交后已识别的票据信息无法修改,是否确认提交?';
@@ -258,8 +263,14 @@ Page({
       content: warMsg,
       success: function (res) {
         if (res.confirm) {
-          var utils = require('../../utils/util.js');
-          var jsonStr = utils.base64_encode(JSON.stringify(that.data));
+          //RSA加密处理
+          var encryptor = new JSEncrypt();
+          encryptor.setPublicKey(publicKey_pkcs1);
+          let jsonStr = encryptor.encryptLong(JSON.stringify(that.data));
+          console.log("加密结果：" + jsonStr);
+          
+          // var utils = require('../../utils/util.js');
+          // var jsonStr = utils.base64_encode(JSON.stringify(that.data));
           // var jsonStr = JSON.stringify(that.data);
           wx.request({
             url: 'https://gyj1.dccnet.com.cn/purchase/~main/wxRequest.php',

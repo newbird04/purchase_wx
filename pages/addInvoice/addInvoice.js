@@ -1,5 +1,5 @@
 import { JSEncrypt } from '../../utils/jsencrypt.js'
-
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
@@ -199,7 +199,7 @@ Page({
       operation: operation
     });
 
-    var publicKey_pkcs1 = '-----BEGIN PUBLIC KEY-----MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCWUNswfbrwfR2nGUwIzATI9D+40Q41CcFhZJsXM922jAFDKIpoonu+OfjjuqY6PO4ftConWufEXXcQEkbfwaCGKASjXQEgrj0YTrEBTjSDemCxVtx72wY90poikhlvvCqByacWAJ+RbJYoPmxsLiahgyjUjAx+WCMQzWfj4HtOhwIDAQAB-----END PUBLIC KEY-----';
+    var publicKey_pkcs1 = app.globalData.publicKey_pkcs1;
 
     var warMsg = '';
     if (operation == '0') warMsg = '确认保存已扫描的票据信息到该预发票?';
