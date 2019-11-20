@@ -1,14 +1,17 @@
-import { JSEncrypt } from '../../utils/jsencrypt.js'
+import {JSEncrypt} from '../../utils/jsencrypt.js'
 const app = getApp();
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    sessionid: '',
-    customerId: '',
-    preInvoiceNo: '',
-    merid: '',
+    show: 0,
+    hidden: true,
+    // sessionid: '',
+    // entryWay: '',
+    // merid: '',
+    // customerId: '',
+    // preInvoiceNo: '',
     invoiceList: [
       // {
       //   certificateCode: '123',
@@ -34,10 +37,18 @@ Page({
     }
     var list = JSON.parse(jsonStr);
     console.log(list);
+    var invoiceEntryType = list.invoiceEntryType;
+    if (invoiceEntryType == '1') {  //预发票补录模式
+      this.setData({
+        preInvoiceNo: list.preInvoiceNo,
+        show: "1"
+      })
+    }
     this.setData({
       sessionid: list.sessionid,
+      invoiceEntryType: list.invoiceEntryType,
       customerId: list.customerId,
-      preInvoiceNo: list.billNo,
+      customerName: list.customerName,
       merid: list.merid,
     })
   },
@@ -202,23 +213,22 @@ Page({
     var publicKey_pkcs1 = app.globalData.publicKey_pkcs1;
 
     var warMsg = '';
-    if (operation == '0') warMsg = '确认保存已扫描的票据信息到该预发票?';
-    if (operation == '1') warMsg = '将提交该预发票信息至核心企业,提交后已扫描的票据信息无法修改,是否确认提交?';
+    if (operation == '0') warMsg = '确认保存已扫描的票据信息?';
+    if (operation == '1') warMsg = '将提交已扫描的票据信息,提交后无法修改,是否确认提交?';
     wx.showModal({
       title: '温馨提示',
       content: warMsg,
       success: function(res) {
+        that.setData({
+          hidden: false
+        });
         if (res.confirm) {
-
           //RSA加密处理
           var encryptor = new JSEncrypt();
           encryptor.setPublicKey(publicKey_pkcs1);
-          var jsonStr = encryptor.encryptLong(JSON.stringify(that.data));
+          let jsonStr = encryptor.encryptLong(JSON.stringify(that.data));
           console.log("加密结果：" + jsonStr);
 
-          // var utils = require('../../utils/util.js');
-          // var jsonStr = utils.base64_encode(JSON.stringify(that.data));
-          // var jsonStr = JSON.stringify(that.data);
           wx.request({
             url: 'https://gyj1.dccnet.com.cn/purchase/~main/wxRequest.php',
             data: {
@@ -229,6 +239,9 @@ Page({
               'content-type': 'application/json'
             },
             success(res) {
+              that.setData({
+                hidden: true
+              });
               // res = JSON.parse(res);
               console.log(res.data);
               if (res.data.retCode == '200') {
@@ -254,6 +267,9 @@ Page({
               }
             },
             fail() {
+              that.setData({
+                hidden: true
+              });
               wx.showToast({
                 title: '请求失败,请联系管理员!',
                 icon: 'none',

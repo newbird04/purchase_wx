@@ -1,10 +1,13 @@
+<loading hidden="{{hidden}}">
+识别中
+</loading>
 <view>
   <view class="list-group">
     <view class="list-item text-grey mx-3">
       <text class="text-grey">供应商</text>
-      <text>{{customerId}}</text>
+      <text>{{customerName}}</text>
     </view>
-    <view class="list-item text-grey mx-3">
+    <view wx:if="{{show !=''}}" class="list-item text-grey mx-3">
       <text class="text-grey">预发票编号</text>
       <text>{{preInvoiceNo}}</text>
     </view>

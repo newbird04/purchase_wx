@@ -25,10 +25,18 @@ Page({
     }
     var list = JSON.parse(jsonStr);
     console.log(list);
+    var invoiceEntryType = list.invoiceEntryType;
+    if (invoiceEntryType == '1') {  //预发票补录模式
+      this.setData({
+        preInvoiceNo: list.preInvoiceNo,
+        show: "1"
+      })
+    }
     this.setData({
       sessionid: list.sessionid,
+      invoiceEntryType: list.invoiceEntryType,
       customerId: list.customerId,
-      preInvoiceNo: list.billNo,
+      customerName: list.customerName,
       merid: list.merid,
     })
   },
@@ -104,8 +112,7 @@ Page({
       success: function (res) {
         that.setData({
           hidden: false
-        })
-        console.log(res);
+        });
         var filePathstr = res.tempFilePaths[0];
         wx.compressImage({
           src: filePathstr, // 图片路径
@@ -263,12 +270,15 @@ Page({
       content: warMsg,
       success: function (res) {
         if (res.confirm) {
+          that.setData({
+            hidden: false
+          })
           //RSA加密处理
           var encryptor = new JSEncrypt();
           encryptor.setPublicKey(publicKey_pkcs1);
           let jsonStr = encryptor.encryptLong(JSON.stringify(that.data));
           console.log("加密结果：" + jsonStr);
-          
+
           // var utils = require('../../utils/util.js');
           // var jsonStr = utils.base64_encode(JSON.stringify(that.data));
           // var jsonStr = JSON.stringify(that.data);
@@ -283,6 +293,9 @@ Page({
               'content-type': 'application/json'
             },
             success(res) {
+              that.setData({
+                hidden: true
+              });
               // res = JSON.parse(res);
               console.log(res.data);
               if (res.data.retCode == '200') {
@@ -308,6 +321,9 @@ Page({
               }
             },
             fail() {
+              that.setData({
+                hidden: true
+              });
               wx.showToast({
                 title: '请求失败,请联系管理员!',
                 icon: 'none',

@@ -1,6 +1,3 @@
-//index.js
-//获取应用实例
-const app = getApp()
 Page({
   data: {
         
@@ -24,8 +21,8 @@ Page({
           return false;
         }
         var url = '';
-        if (operation == '0') url = '../addInvoice/addInvoice?preinvoice=' + utils.base64_decode(res.result); 
-        if (operation == '1') url = '../ocrInvoice/ocrInvoice?preinvoice=' + utils.base64_decode(res.result); 
+        if (operation == '0') url = '../addInvoice/addInvoice?preinvoice=' + invoice; 
+        if (operation == '1') url = '../ocrInvoice/ocrInvoice?preinvoice=' + invoice; 
         wx.navigateTo({
           url: url
         })
@@ -35,9 +32,9 @@ Page({
   checkInvoice: function (invoice) {
     try{
       invoice = JSON.parse(invoice);
-      if (!(invoice && invoice.sessionid && invoice.customerId && invoice.billNo && invoice.merid)) {
+      if (!(invoice && invoice.sessionid && invoice.customerId && invoice.invoiceEntryType && invoice.merid)) {
         wx.showToast({
-          title: '请扫描正确有效的预发票信息!',
+          title: '请确认扫描的二维码是否正确!',
           icon: 'none',
           duration: 3000
         });
@@ -45,7 +42,7 @@ Page({
       }
     } catch(error){
       wx.showToast({
-        title: '扫描预发票信息异常!',
+        title: '扫描二维码信息异常!',
         icon: 'none',
         duration: 3000
       });
