@@ -41,7 +41,7 @@ Page({
     if (invoiceEntryType == '1') {  //预发票补录模式
       this.setData({
         preInvoiceNo: list.preInvoiceNo,
-        show: "1"
+        show: 1
       })
     }
     this.setData({
@@ -278,6 +278,9 @@ Page({
             }
           })
         } else if (res.cancel) {
+          that.setData({
+            hidden: true
+          });
           return;
         }
       }
