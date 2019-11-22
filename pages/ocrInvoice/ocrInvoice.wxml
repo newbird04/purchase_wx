@@ -1,5 +1,5 @@
 <loading hidden="{{hidden}}">
-识别中
+处理中
 </loading>
 <view>
   <view class="list-group">
