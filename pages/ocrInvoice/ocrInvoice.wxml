@@ -69,13 +69,13 @@
     </view>
     <view class="warn-notice-body">
       <view>
-        <text>保存表示票据与预发票关联暂存但不提交；</text> 
+        <text>暂存表示票据暂存到工银聚系统但不提交企业；</text> 
       </view>
       <view>
         <text>提交表示保存并推送企业ERP；</text>
       </view>
       <view>
-        <text>全部操作结束，调整页面，显示操作失败还是成功；同时提示刷新电脑 端页面查看最终操作结果。</text>
+        <text>全部操作结束，调整页面，显示操作失败还是成功；同时提示刷新电脑端页面查看最终操作结果。</text>
       </view>
     </view>
   </view>
