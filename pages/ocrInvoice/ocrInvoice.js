@@ -264,7 +264,7 @@ Page({
     var publicKey_pkcs1 = app.globalData.publicKey_pkcs1;
 
     var warMsg = '';
-    if (operation == '0') warMsg = '确认保存已识别的票据信息到该预发票?';
+    if (operation == '0') warMsg = '确认保存已识别的票据信息?';
     if (operation == '1') warMsg = '将提交该票据信息至核心企业,提交后已识别的票据信息无法修改,是否确认提交?';
     wx.showModal({
       title: '温馨提示',
