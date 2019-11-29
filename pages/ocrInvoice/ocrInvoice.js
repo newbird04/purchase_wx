@@ -128,7 +128,11 @@ Page({
                 that.setData({
                   hidden: true
                 })
-                var data = JSON.parse(res.data);
+                var data = res.data.replace(" ", "");
+                if (typeof data != 'object') {
+                  data = data.replace(/\ufeff/g, "");
+                }
+                data = JSON.parse(data);
                 if (data.retCode == '200') {
                   const invoice = {
                     certificateCode: data.certificateCode,
